@@ -1,0 +1,24 @@
+{
+  "name": "mithril-typescript-starter",
+  "version": "1.0.0",
+  "description": "A Typescript and SCSS build configuration for Mithril",
+  "main": "/scripts/local.js",
+  "dependencies": {
+    "mithril": "^2.0.4",
+    "rollup": "^2.18.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-typescript": "^5.0.0",
+    "node-sass": "^4.14.1",
+    "rollup-plugin-sourcemaps": "^0.6.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5",
+    "wright": "^2.0.2"
+  },
+  "scripts": {
+    "local": "node scripts/local"
+  },
+  "author": "Bryan Walsh",
+  "license": "ISC"
+}
