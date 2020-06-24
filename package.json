@@ -6,20 +6,26 @@
   "dependencies": {
     "cross-env": "^7.0.2",
     "mithril": "^2.0.4",
-    "rollup": "^2.18.0"
+    "rollup": "^2.18.0",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/plugin-typescript": "^5.0.0",
+    "fs-extra": "^9.0.1",
     "node-sass": "^4.14.1",
     "rollup-plugin-sourcemaps": "^0.6.2",
+    "rollup-plugin-uglify": "^6.0.4",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5",
     "wright": "^2.0.2"
   },
   "scripts": {
-    "local": "cross-env ENV=local && node scripts/local"
+    "local": "cross-env ENV=local && node scripts/local",
+    "build:dev": "cross-env ENV=staging && node scripts/local",
+    "build:staging": "cross-env ENV=staging && node scripts/local",
+    "build:production": "cross-env ENV=production && node scripts/local"
   },
   "author": "Bryan Walsh",
   "license": "ISC"
