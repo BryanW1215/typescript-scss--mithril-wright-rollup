@@ -2,6 +2,7 @@ const wright = require('wright'),
     rollup = require('rollup'),
     typescript = require('@rollup/plugin-typescript'),
     commonJs = require('@rollup/plugin-commonjs'),
+    rReplace = require('@rollup/plugin-replace'),
     sass = require('node-sass');
 
 
@@ -22,10 +23,17 @@ wright({
 });
 
 function compileTS() {
+    const environment = process.env.ENV;
+    const environmentFile = `environments/environment.${environment}`;
     return rollup.rollup(
         {
             input: 'src/app.ts',
-            plugins: [typescript({sourceMap: true}), commonJs({sourcemap: true, extensions: ['.js', '.ts']})],
+            plugins: [
+                rReplace({
+                    'environments/environment': environmentFile,
+                }),
+                typescript({sourceMap: true}),
+                commonJs({sourcemap: true, extensions: ['.js', '.ts']})],
             output: {
                 format: 'es',
                 sourcemap: 'inline',
@@ -39,7 +47,7 @@ function compileTS() {
 
 function compileSCSS() {
     return new Promise((resolve, reject) => {
-        sass.render({file:'src/styles.scss'}, (err, result) => {
+        sass.render({file: 'src/styles.scss'}, (err, result) => {
             resolve(result.css.toString())
         });
     });
